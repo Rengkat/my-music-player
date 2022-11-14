@@ -1,0 +1,61 @@
+.nav {
+  border-right: 7px solid green;
+}
+.music-card {
+  position: relative;
+  /* transition: all 5s linear; */
+}
+.music-card:hover.music-card::after {
+  content: "";
+  padding: 5;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.616);
+  /* transition: all 5s linear; */
+  z-index: 4;
+}
+.over-play {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.5s linear;
+  box-shadow: inset;
+}
+
+.music-card:hover .over-play {
+  opacity: 1;
+}
+.tr:hover {
+  background-color: rgb(35, 35, 35);
+  opacity: 1;
+}
+.play {
+  opacity: 0;
+}
+.tr:hover .play {
+  opacity: 1;
+}
+.album-card {
+  position: relative;
+}
+.overlay-album {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  cursor: pointer;
+  /* transition: all 0.5s linear; */
+  box-shadow: inset;
+}
+.album-card:hover {
+  background-color: black;
+}
+.album-card:hover .overlay-album {
+  opacity: 1;
+}
