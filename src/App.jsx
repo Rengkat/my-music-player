@@ -55,7 +55,7 @@ function App() {
         px={7}
         zIndex={50}
         right="0"
-        h={{ base: "40vh", lg: "7rem" }}>
+        h={{ base: "20vh", lg: "7rem" }}>
         <Player />
       </Box>
     </>
