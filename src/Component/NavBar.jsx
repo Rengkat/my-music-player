@@ -10,17 +10,7 @@ import {
 import logo from "../assets/logo.png";
 const NavBar = () => {
   return (
-    <Box
-      w="15%"
-      bg="#212121"
-      color="white"
-      h="100vh"
-      pos="fixed"
-      fontSize={20}
-      zIndex={20}
-      left={0}
-      top={0}
-      bottom={0}>
+    <Box>
       {/* logo */}
       <Center mt={8} gap={2}>
         <Image src={logo} alt="Logo-Image" h={12} w={12} />

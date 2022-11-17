@@ -59,3 +59,9 @@
 .album-card:hover .overlay-album {
   opacity: 1;
 }
+.me {
+  order: 2;
+}
+.mi {
+  order: 1;
+}

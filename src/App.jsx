@@ -19,8 +19,21 @@ function App() {
   return (
     <>
       <Grid templatec={"repeat(8,1fr)"} gap={4}>
-        <NavBar />
-        <Box gridColumnStart="2" gridColumnEnd="9">
+        <Box
+          minWidth="15rem"
+          bg="#212121"
+          color="white"
+          display={{ base: "none" }}
+          h="100vh"
+          pos="fixed"
+          fontSize={20}
+          zIndex={20}
+          left={0}
+          top={0}
+          bottom={0}>
+          <NavBar />
+        </Box>
+        <Box gridColumnStart={{ md: "2" }} gridColumnEnd={{ md: "9" }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/top-chart" element={<TopChart />} />
@@ -33,7 +46,18 @@ function App() {
           </Routes>
         </Box>
       </Grid>
-      <Player />
+      <Box
+        colSpan={8}
+        bg="#121212"
+        pos="fixed"
+        bottom="0"
+        left="0"
+        px={7}
+        zIndex={50}
+        right="0"
+        h={{ base: "40vh", lg: "7rem" }}>
+        <Player />
+      </Box>
     </>
   );
 }

@@ -4,8 +4,14 @@ import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/all";
 
 const TopChart = () => {
   return (
-    <Box px={2} py={1} w="90%" mx="auto">
-      <Flex gap={10}>
+    <Box
+      px={{ base: 10, lg: 2 }}
+      py={{ base: 2, lg: 1.5 }}
+      w={{ base: "100%", lg: "90%" }}
+      mx="auto"
+      // px={{ base: "3rem", lg: "0px" }}
+    >
+      <Flex gap={10} justify="space-between">
         {/* <Center> */}
         <Image src={img} alt="Image" w="6rem" h="4.5rem" objectFit="cover" />
         <Center>

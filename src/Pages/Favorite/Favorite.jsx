@@ -14,7 +14,7 @@ const Favorite = () => {
         icon={<MdFavorite />}
         subTitle="Favorite songs"
       />
-      <TableData data={arr} date="DATE ADDED" />
+      <TableData data={arr} date="DATE ADDED" display="none" />
     </Box>
   );
 };

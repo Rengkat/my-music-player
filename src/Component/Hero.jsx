@@ -28,18 +28,16 @@ const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
         backgroundAttachment="fixed"
         backgroundImage={Mi}>
         <Box ml="10rem">
-          <Flex flexDir="column" justify="end" height="40vh" color="white">
-            <Flex alignItems="center" gap={2}>
+          <Flex flexDir="column" justify="end" height="38vh" color="white">
+            <Flex alignItems="center" gap={1} mb="-1rem">
               <Box fontSize={30}> {icon} </Box>
               <Text>{subTitle}</Text>
             </Flex>
-            <Heading as="h1" fontSize="5.5rem" color="white">
+            <Heading pb="-20rem" as="h1" fontSize="5.5rem" color="white">
               {name}
             </Heading>
-            <Text fontWeight="bold" py={2}>
-              {nums}
-            </Text>
-            <Flex align="center" gap={8} py={3} display={temTyle}>
+            <Text fontWeight="bold">{nums}</Text>
+            {/* <Flex align="center" gap={8} pb={3} display={temTyle}>
               <Icon as={BsFillPlayCircleFill} fontSize="4rem" color="#1db954" />
               <Text
                 border="2px solid white"
@@ -48,7 +46,7 @@ const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
                 borderRadius={5}>
                 Follow
               </Text>
-            </Flex>
+            </Flex> */}
           </Flex>
         </Box>
       </Box>

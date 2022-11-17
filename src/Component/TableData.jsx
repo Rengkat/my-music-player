@@ -9,14 +9,31 @@ import {
   Td,
   TableContainer,
 } from "@chakra-ui/react";
-import { BiTime, BsPlayFill } from "react-icons/all";
+import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
 import mi from "../assets/image-24-6-1920x1280.jpg";
 
-const TableData = ({ date, data }) => {
+const TableData = ({ date, data, display }) => {
   return (
-    <TableContainer w="85%" ml="12rem">
+    <TableContainer
+      w={{ base: "100%", lg: "85%" }}
+      ml={{ base: "0rem", lg: "10rem" }}>
+      <Flex align="center" gap={8} p={3}>
+        <Icon
+          as={BsFillPlayCircleFill}
+          cursor="pointer"
+          fontSize="4rem"
+          color="#1db954"
+        />
+        <Text
+          border="2px solid white"
+          display={display}
+          fontSize={20}
+          px={4}
+          borderRadius={5}>
+          Follow
+        </Text>
+      </Flex>
       <Table variant="simple" colorScheme="black">
-        {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
         <Thead>
           <Tr>
             <Th w="0.5rem"></Th>
@@ -35,7 +52,7 @@ const TableData = ({ date, data }) => {
               <Tr className="tr">
                 <Td border="none">{i + 1}</Td>
 
-                <Td border="none">
+                <Td w="0.4rem" border="none">
                   <Flex gap={3}>
                     <Image src={mi} h={10} w={12} />{" "}
                     <Text pt={2}>M.I Abaga - Bigger Feat. Nas...</Text>

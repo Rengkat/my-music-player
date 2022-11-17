@@ -14,7 +14,7 @@ const TopChart = () => {
         icon={<BsBarChartLineFill />}
         subTitle="Top chart songs"
       />
-      <TableData date="DATE RELEASED" data={arr} />
+      <TableData date="DATE RELEASED" data={arr} display="none" />
     </Box>
   );
 };

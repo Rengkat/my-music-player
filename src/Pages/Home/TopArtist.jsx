@@ -4,7 +4,13 @@ import { Box, Image, Flex } from "@chakra-ui/react";
 const TopArtist = () => {
   return (
     <Box>
-      <Image src={img} h="7rem" w="7rem" rounded="full" objectFit="cover" />
+      <Image
+        src={img}
+        h={{ base: "6.5rem", lg: "7rem" }}
+        w={{ base: "6.5rem", lg: "7rem" }}
+        rounded="full"
+        objectFit="cover"
+      />
     </Box>
   );
 };

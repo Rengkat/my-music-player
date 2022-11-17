@@ -26,21 +26,20 @@ import {
 import { Link } from "react-router-dom";
 const Player = () => {
   return (
-    <Box
-      bg="#121212"
-      pos="fixed"
-      bottom="0"
-      left="0"
-      px={7}
-      // opacity="0.6"
-      zIndex={50}
-      right="0"
-      h={"12vh"}>
-      <Flex justify="space-between" pt="1rem">
+    <Box>
+      <Flex
+        justify="space-between"
+        pt={{ base: "0.6rem", lg: "1rem" }}
+        flexDir={{ base: "column", lg: "row" }}>
         {/* ==============MUSIC INFOR======== */}
         <Box color="white">
-          <Center gap={5} fontSize={15}>
-            <Image src={im} w={16} h={12} border="1px solid white" />
+          <Center gap={{ base: 10, lg: 5 }} fontSize={15}>
+            <Image
+              src={im}
+              w={{ base: 9, lg: 12 }}
+              h={{ base: 9, lg: 12 }}
+              border="1px solid white"
+            />
             <Box>
               <Text>Bigger Feat...</Text>
               <Text>
@@ -51,7 +50,7 @@ const Player = () => {
           </Center>
         </Box>
         {/* =================CONTROLS=============== */}
-        <Box>
+        <Box py={{ base: 3, lg: 5 }}>
           <Center gap={5} fontSize={20}>
             <Icon as={BsShuffle} color="white" />
             <Icon as={FaBackward} color="white" />
@@ -61,7 +60,8 @@ const Player = () => {
           </Center>
           <Progress
             mt={3}
-            w="35rem"
+            w={{ base: "15rem", lg: "32rem" }}
+            mx="auto"
             value={50}
             size="xs"
             colorScheme="green"
@@ -70,7 +70,7 @@ const Player = () => {
           />
         </Box>
         {/* ==============volume================== */}
-        <Box pt={5}>
+        <Box pt={5} display={{ base: "none", lg: "block" }}>
           <Center gap={4}>
             <Icon as={GiMicrophone} color="white" />
             <Center gap={2}>

@@ -21,7 +21,6 @@ const MusicCard = ({ card }) => {
           <Text>M.I Abaga - Bigger Feat...</Text>
           <Text>2022 Album</Text>
         </Box>
-        9
       </Box>
       <Box className="over-play">
         <BsFillPlayCircleFill fontSize={60} color="#1db954" />
