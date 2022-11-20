@@ -65,3 +65,12 @@
 .mi {
   order: 1;
 }
+.table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100px;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 5px;
+  /* width: 200px; */
+}

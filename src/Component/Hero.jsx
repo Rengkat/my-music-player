@@ -21,34 +21,32 @@ const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
     <Box ml={2}>
       <Box
         w="100%"
-        h="40vh"
+        h={{ base: "20vh", lg: "40vh" }}
         backgroundPosition="center center"
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
         backgroundAttachment="fixed"
-        backgroundImage={Mi}>
-        <Box ml="10rem">
+        // backgroundImage={Mi}
+      >
+        {/* <Box ml={{ base: "2rem", lg: "10rem" }}>
           <Flex flexDir="column" justify="end" height="38vh" color="white">
-            <Flex alignItems="center" gap={1} mb="-1rem">
+            <Flex
+              alignItems="center"
+              gap={1}
+              mb={{ base: "0rem", lg: "-1rem" }}>
               <Box fontSize={30}> {icon} </Box>
               <Text>{subTitle}</Text>
             </Flex>
-            <Heading pb="-20rem" as="h1" fontSize="5.5rem" color="white">
+            <Heading
+              pb="-20rem"
+              as="h1"
+              fontSize={{ base: "2rem", lg: "5.5rem" }}
+              color="white">
               {name}
             </Heading>
             <Text fontWeight="bold">{nums}</Text>
-            {/* <Flex align="center" gap={8} pb={3} display={temTyle}>
-              <Icon as={BsFillPlayCircleFill} fontSize="4rem" color="#1db954" />
-              <Text
-                border="2px solid white"
-                fontSize={20}
-                px={4}
-                borderRadius={5}>
-                Follow
-              </Text>
-            </Flex> */}
           </Flex>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

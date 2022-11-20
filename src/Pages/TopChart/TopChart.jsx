@@ -4,7 +4,7 @@ import TableData from "../../Component/TableData";
 
 import { BsBarChartLineFill } from "react-icons/all";
 
-const arr = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
+const arr = [2, 2, 2, 2, 2, 2, 2];
 const TopChart = () => {
   return (
     <Box bg="#121212" color="white" pb="7rem">

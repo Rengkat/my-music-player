@@ -38,6 +38,7 @@ const NavBar = () => {
         </NavLink>
         <NavLink to={"/albums"}>
           <Flex w="80%" mb={3}>
+            favorite
             <Center gap={3}>
               <Icon as={BsFillFileMusicFill} color="white" opacity="0.7" />
               <Text>Albums</Text>
@@ -52,7 +53,7 @@ const NavBar = () => {
             </Center>
           </Flex>
         </NavLink>
-        <NavLink to={"/favorite"}>
+        <NavLink to={"/"}>
           <Flex w="80%" mb={3}>
             <Center gap={3}>
               <Icon as={MdFavorite} color="white" opacity="0.7" />

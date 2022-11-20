@@ -23,7 +23,7 @@ function App() {
           minWidth="15rem"
           bg="#212121"
           color="white"
-          display={{ base: "none" }}
+          display={{ base: "none", lg: "block" }}
           h="100vh"
           pos="fixed"
           fontSize={20}
