@@ -15,7 +15,7 @@ import mi from "../assets/image-24-6-1920x1280.jpg";
 const TableData = ({ date, data, display }) => {
   return (
     <>
-      <TableContainer pr={2} bg="#121212">
+      <TableContainer pr={2} bg="#121212" h="100vh">
         <Table
           ml="0rem"
           className="table"
