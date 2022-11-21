@@ -1,4 +1,4 @@
-import { Grid, Flex } from "@chakra-ui/react";
+import { Grid, Flex, Text } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import NavBar from "./Component/NavBar";
@@ -19,6 +19,16 @@ function App() {
   return (
     <>
       <Grid gridTemplateColumns={{ base: "1fr", lg: "repeat(8,1fr)" }} gap={4}>
+        <Text
+          zIndex={100}
+          pos="absolute"
+          top={0}
+          right={0}
+          border="white solid 1px"
+          color="white"
+          fontSize={20}>
+          Mee
+        </Text>
         <Box
           minWidth="15rem"
           bg="#212121"

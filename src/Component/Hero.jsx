@@ -22,7 +22,7 @@ const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
     <Box ml={0}>
       <Box
         w="100%"
-        h={{ base: "15vh", lg: "40vh" }}
+        h={{ base: "20vh", lg: "40vh" }}
         // backgroundPosition=""
         backgroundPosition={{ base: "bottom", lg: "left" }}
         backgroundSize="auto"
@@ -31,7 +31,7 @@ const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
         backgroundImage={{ base: mobileHeroImage, lg: desktopHeroImage }}>
         <Box
           pl={{ base: "1rem", lg: "5rem" }}
-          pt={{ base: "3rem", lg: "7rem" }}>
+          pt={{ base: "5rem", lg: "7rem" }}>
           <Flex flexDir="column" justify="end" color="white">
             <Flex
               alignItems="center"
