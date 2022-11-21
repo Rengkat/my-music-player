@@ -8,7 +8,7 @@ const GridTopArtist = () => {
     <Box
       className="album-card"
       p={1}
-      my={2}
+      my={1}
       color="white"
       //   border="1px solid "
       bg="#212121"
@@ -17,7 +17,7 @@ const GridTopArtist = () => {
         <Image
           src={mi}
           w="100%"
-          h="12rem"
+          h={{ base: "10rem", lg: "12rem" }}
           alt="Image"
           p={2}
           objectFit="cover"

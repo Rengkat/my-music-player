@@ -11,47 +11,47 @@ import {
 } from "@chakra-ui/react";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
 import mi from "../assets/image-24-6-1920x1280.jpg";
-import TableDesktop from "./TableDesktop";
 
-const TableData = ({ date, data, display }) => {
+const TableDesktop = ({ date, data, display }) => {
   return (
     <>
       <TableContainer
-        bg="#121212"
-        h="100vh"
         overflow="hidden"
-        padding={0}
-        display={{ base: "block", md: "none" }}>
-        <Flex align="center" gap={3} pb="1rem" pl={5}>
+        bg="#121212"
+        display={{ base: "none", lg: "block" }}
+        w={{ base: "100%", lg: "90%" }}
+        ml={{ base: "0rem", lg: "3rem" }}>
+        <Flex align="center" gap={8} pb="-3rem" pl="2rem">
           <Icon
             as={BsFillPlayCircleFill}
             cursor="pointer"
-            fontSize="2rem"
+            fontSize="4rem"
             color="#1db954"
           />
           <Text
             border="2px solid white"
             display={display}
-            fontSize={12}
+            fontSize={20}
             px={4}
             borderRadius={5}>
             Follow
           </Text>
         </Flex>
         <Table
-          className="table"
-          size={{ base: "sm", md: "md", lg: "lg" }}
-          mx="auto"
+          className="tableDesktop"
+          size="lg"
           variant="simple"
           colorScheme="black">
           <Thead>
             <Tr>
-              <Th w="5px"></Th>
-              <Th w="8rem">TITLE</Th>
-              <Th w="5rem">ALBUM</Th>
-              <Th w="6rem">Date</Th>
-              <Th>
-                <Icon as={BiTime} fontSize={18} />
+              <Th border="none"></Th>
+              <Th border="none">
+                <Text pl="5rem">TITLE</Text>
+              </Th>
+              <Th border="none">ALBUM</Th>
+              <Th border="none">{date}</Th>
+              <Th border="none">
+                <Icon as={BiTime} fontSize={25} />
               </Th>
               {/* <Th></Th> */}
             </Tr>
@@ -59,32 +59,38 @@ const TableData = ({ date, data, display }) => {
           {data?.map((data, i) => {
             return (
               <Tbody key={i}>
-                <Tr>
-                  <Td border="none" white-space="nowrap">
-                    <Text fontSize={10}>{i + 1}</Text>
+                <Tr className="tr">
+                  <Td border="none">
+                    <Text>{i + 1}</Text>
                   </Td>
-                  <Td border="none" wordBreak="break-all">
-                    <Flex gap={1}>
+                  <Td border="none">
+                    <Flex gap={3}>
                       <Image
-                        display="none"
                         border="none"
                         src={mi}
                         h={{ base: 5, lg: 10 }}
                         w={12}
-                      />{" "}
-                      <Text wordBreak="break-all" fontSize={10}>
-                        M.I Abaga - Bigger
-                      </Text>
+                        objectFit="cover"
+                      />
+                      <Text pt={2}>M.I Abaga - Bigger fit Olamide & Nas</Text>
                     </Flex>
                   </Td>
                   <Td border="none">
-                    <Text fontSize={10}>The Guy</Text>
+                    <Text>The Guy</Text>
                   </Td>
                   <Td border="none">
-                    <Text fontSize={10}>24 Dec., 2022</Text>
+                    <Text>24 Dec., 2022</Text>
                   </Td>
                   <Td border="none">
-                    <Text fontSize={10}>25.4</Text>
+                    <Text>25.4</Text>
+                  </Td>
+                  <Td border="none">
+                    <Icon
+                      //   color="white"
+                      className="play"
+                      as={BsPlayFill}
+                      fontSize={25}
+                    />
                   </Td>
                 </Tr>
               </Tbody>
@@ -92,9 +98,8 @@ const TableData = ({ date, data, display }) => {
           })}
         </Table>
       </TableContainer>
-      <TableDesktop date={date} data={data} display={display} />
     </>
   );
 };
 
-export default TableData;
+export default TableDesktop;

@@ -8,33 +8,24 @@ import MusicCard from "./MusicCard";
 const Home = () => {
   const card = [1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
   return (
-    <Flex w="100%" bg="pink" flexDir={{ base: "column-reverse", lg: "row" }}>
-      <Box w={{ base: "100%", lg: "73%" }}>
-        <Box bg="#121212" pb={"10rem"}>
-          <Link to="/top-chart">
-            <Text ml="15rem" border="1px solid white" display="inline-block">
-              Top char
-            </Text>
-          </Link>
-          <Link to="/favorite">
-            <Text ml="15rem" display="inline-block" border="1px solid white">
-              Favorite
-            </Text>
-          </Link>
-          <Link to="/albumDetail">
-            <Text ml="15rem" display="inline-block" border="1px solid white">
-              Detail
-            </Text>
-          </Link>
+    <Flex
+      w="100%"
+      bg="#121212"
+      // justify={"space-between"}
+      // gap={"100rem"}
+      flexDir={{ base: "column-reverse", lg: "row" }}>
+      <Box w={{ base: "100%", lg: "69%" }}>
+        <Box pb={"10rem"}>
+          <Search />
           <Grid
             gridTemplateColumns={{
               base: "repeat(2, 1fr)",
               md: "repeat(3,1fr)",
               lg: "repeat(4,1fr)",
             }}
-            ml={{ base: "0rem", md: "12rem" }}
+            ml={{ base: "0rem", md: "3rem" }}
             gap={5}
-            p={5}>
+            p={3}>
             {card.map((card) => {
               return <MusicCard key={card} card={card} />;
             })}

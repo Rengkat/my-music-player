@@ -13,18 +13,10 @@ const AlbumDetail = () => {
           name="Name of Album"
           temTyle="flex"
           nums="12 tracks"
-          // icon={<BsBarChartLineFill />}
           subTitle="Album"
         />
       </Box>
       <Box>
-        {/* <Flex align="center" gap={8} pb={3} ml="12rem">
-          <Icon as={BsFillPlayCircleFill} fontSize="4rem" color="#1db954" />
-          <Text border="2px solid white" fontSize={20} px={4} borderRadius={5}>
-            Follow
-          </Text>
-        </Flex> */}
-
         <TableData date="DATE RELEASED" data={arr} display="none" />
       </Box>
     </Box>

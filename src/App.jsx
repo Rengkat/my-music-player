@@ -18,7 +18,7 @@ import Player from "./Component/Player";
 function App() {
   return (
     <>
-      <Grid templatec={"repeat(8,1fr)"} gap={4}>
+      <Grid gridTemplateColumns={{ base: "1fr", lg: "repeat(8,1fr)" }} gap={4}>
         <Box
           minWidth="15rem"
           bg="#212121"

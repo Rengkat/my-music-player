@@ -20,15 +20,15 @@ const NavBar = () => {
       </Center>
       {/* NAVS */}
       <Box ml={6} mt={8} lineHeight={10}>
-        <NavLink to={"/"}>
-          <Flex mb={3} className="nav">
+        <NavLink to={"/"} className="nav">
+          <Flex mb={3}>
             <Center gap={3}>
               <Icon as={AiFillHome} color="white" opacity="0.7" />
               <Text>Home</Text>
             </Center>
           </Flex>
         </NavLink>
-        <NavLink to={"/top-chart"}>
+        <NavLink to={"/top-chart"} className="nav">
           <Flex w="80%" mb={3}>
             <Center gap={3}>
               <Icon as={BsBarChartLineFill} color="white" opacity="0.7" />
@@ -36,16 +36,15 @@ const NavBar = () => {
             </Center>
           </Flex>
         </NavLink>
-        <NavLink to={"/albums"}>
+        <NavLink to={"/albums"} className="nav">
           <Flex w="80%" mb={3}>
-            favorite
             <Center gap={3}>
               <Icon as={BsFillFileMusicFill} color="white" opacity="0.7" />
               <Text>Albums</Text>
             </Center>
           </Flex>
         </NavLink>
-        <NavLink to={"/top-artist"}>
+        <NavLink to={"/top-artist"} className="nav">
           <Flex w="80%" mb={3}>
             <Center gap={3}>
               <Icon as={FaMedal} color="white" opacity="0.7" />
@@ -53,7 +52,7 @@ const NavBar = () => {
             </Center>
           </Flex>
         </NavLink>
-        <NavLink to={"/"}>
+        <NavLink to={"/favorite"} className="nav">
           <Flex w="80%" mb={3}>
             <Center gap={3}>
               <Icon as={MdFavorite} color="white" opacity="0.7" />

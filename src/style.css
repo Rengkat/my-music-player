@@ -1,5 +1,10 @@
 .nav {
-  border-right: 7px solid green;
+  display: flex;
+}
+.active {
+  border-right: 10px solid #1db954 !important;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 .music-card {
   position: relative;
@@ -36,6 +41,9 @@
 .play {
   opacity: 0;
 }
+.tr {
+  /* border: none; */
+}
 .tr:hover .play {
   opacity: 1;
 }
@@ -59,18 +67,16 @@
 .album-card:hover .overlay-album {
   opacity: 1;
 }
-.me {
-  order: 2;
-}
-.mi {
-  order: 1;
-}
+
 .table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100px;
   word-wrap: break-word;
   word-break: break-all;
-  padding: 5px;
-  /* width: 200px; */
+}
+.tableDesktop {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100px;
 }

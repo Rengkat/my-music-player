@@ -7,7 +7,7 @@ const TopChart = () => {
   const arr = [2, 3, 4, 5, 6, 7, 7, 8, 9, 6, 5, 5, 5, 5, 5, 55, 5];
   return (
     <Box>
-      <Box ml={20}>
+      <Box>
         <Hero
           name="Popular Artists"
           temTyle="none"
@@ -17,12 +17,13 @@ const TopChart = () => {
       </Box>
       <Grid
         bg="#121212"
-        gridTemplateColumns="repeat(6, 1fr)"
-        gap={5}
-        ml="10rem"
-        pb="6rem"
-        pl="5rem"
-        pr="2rem">
+        py="2rem"
+        gridTemplateColumns={{ base: "1fr 1fr", lg: "repeat(6, 1fr)" }}
+        gap={{ base: 3, lg: 5 }}
+        // ml="10rem"
+        pb="8rem"
+        pl={{ base: "1rem", lg: "4rem" }}
+        pr="1rem">
         {arr?.map((data, i) => {
           return <GridTopArtist key={i} />;
         })}

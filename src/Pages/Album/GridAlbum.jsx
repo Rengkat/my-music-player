@@ -8,13 +8,13 @@ const GridAlbum = () => {
     <Box
       className="album-card"
       p={1}
-      my={2}
+      my={1}
       color="white"
       border="1px solid grey"
       bg="#212121"
       borderRadius={7}>
       <Link to="/albumDetail">
-        <Image src={mi} w="100%" h="12rem" objectFit="cover" borderRadius={7} />
+        <Image src={mi} w="100%" h="10rem" objectFit="cover" borderRadius={7} />
         <Box>
           <Text>M.I Abaga </Text>
           <Flex gap={2}>
