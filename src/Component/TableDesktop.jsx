@@ -21,7 +21,7 @@ const TableDesktop = ({ date, data, display }) => {
         display={{ base: "none", lg: "block" }}
         w={{ base: "100%", lg: "90%" }}
         ml={{ base: "0rem", lg: "3rem" }}>
-        <Flex align="center" gap={8} pb="-3rem" pl="2rem">
+        <Flex align="center" gap={8} pb="-3rem" pl="2rem" pt={4}>
           <Icon
             as={BsFillPlayCircleFill}
             cursor="pointer"

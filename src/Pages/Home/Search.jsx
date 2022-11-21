@@ -28,13 +28,13 @@ const Search = () => {
         <Heading
           display={{ base: "none", lg: "block" }}
           as="h5"
-          ml="5rem"
+          ml="3rem"
           fontSize={30}
           color="white">
           Discover
         </Heading>
         <SelectField
-          w={{ base: "30%", lg: "12%" }}
+          w={{ base: "30%", lg: "18%" }}
           p="9px"
           borderRadius="4px"
           bg="#212121"

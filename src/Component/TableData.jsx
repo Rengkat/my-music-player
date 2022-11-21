@@ -22,7 +22,7 @@ const TableData = ({ date, data, display }) => {
         overflow="hidden"
         padding={0}
         display={{ base: "block", md: "none" }}>
-        <Flex align="center" gap={3} pb="1rem" pl={5}>
+        <Flex align="center" gap={3} pb="1rem" pl={5} pt={3}>
           <Icon
             as={BsFillPlayCircleFill}
             cursor="pointer"

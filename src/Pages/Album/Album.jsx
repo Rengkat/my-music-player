@@ -1,9 +1,7 @@
 import { Box, Text, Image, Grid } from "@chakra-ui/react";
-// import Hero from "../../Component/Hero";
 import GridAlbum from "./GridAlbum";
 import { BsFillFileMusicFill } from "react-icons/all";
 import Hero from "../../Component/Hero";
-// import Hero2 from "../../Component/Hero2";
 
 const arr = [1, 23, 4, 4, 4, 5, 6, , 4, 57, 5, 4, , 3, 2, 2, 2, 2, 2, 4];
 const Album = () => {

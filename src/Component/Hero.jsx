@@ -13,28 +13,31 @@ import {
   IoMdVolumeOff,
   MdOutlineFavoriteBorder,
 } from "react-icons/all";
-import Mi from "../assets/image-24-6-1920x1280.jpg";
+import desktopHeroImage from "../assets/ligtGreee.png";
+import mobileHeroImage from "../assets/mobile.png";
 import { MdVerified } from "react-icons/all";
 
 const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
   return (
-    <Box ml={2}>
+    <Box ml={0}>
       <Box
         w="100%"
-        h={{ base: "20vh", lg: "40vh" }}
-        backgroundPosition="center center"
-        backgroundSize="cover"
+        h={{ base: "15vh", lg: "40vh" }}
+        // backgroundPosition=""
+        backgroundPosition={{ base: "bottom", lg: "left" }}
+        backgroundSize="auto"
         backgroundRepeat="no-repeat"
         backgroundAttachment="fixed"
-        // backgroundImage={Mi}
-      >
-        {/* <Box ml={{ base: "2rem", lg: "10rem" }}>
-          <Flex flexDir="column" justify="end" height="38vh" color="white">
+        backgroundImage={{ base: mobileHeroImage, lg: desktopHeroImage }}>
+        <Box
+          pl={{ base: "1rem", lg: "5rem" }}
+          pt={{ base: "3rem", lg: "7rem" }}>
+          <Flex flexDir="column" justify="end" color="white">
             <Flex
               alignItems="center"
               gap={1}
-              mb={{ base: "0rem", lg: "-1rem" }}>
-              <Box fontSize={30}> {icon} </Box>
+              mb={{ base: "-0.3rem", lg: "-1rem" }}>
+              <Box fontSize={{ base: 10, lg: 30 }}> {icon} </Box>
               <Text>{subTitle}</Text>
             </Flex>
             <Heading
@@ -46,7 +49,7 @@ const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
             </Heading>
             <Text fontWeight="bold">{nums}</Text>
           </Flex>
-        </Box> */}
+        </Box>
       </Box>
     </Box>
   );
