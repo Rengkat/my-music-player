@@ -1,7 +1,8 @@
-import { Grid, Flex, Text } from "@chakra-ui/react";
+import { Grid, Flex, Text, Icon, IconButton } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import NavBar from "./Component/NavBar";
+import { BiMenuAltRight } from "react-icons/all";
 import "./style.css";
 import {
   Home,
@@ -14,26 +15,35 @@ import {
   AlbumDetail,
 } from "./Pages/index";
 import Player from "./Component/Player";
-
+import { useDispatch, useSelector } from "react-redux";
+import { openMobileNav } from "./Redux/Reducers/AppSlice";
 function App() {
+  const dispatch = useDispatch();
+  const { isMobileNavOpen } = useSelector((store) => store.appstate);
+  // console.log(openMobileNav);
   return (
     <>
       <Grid gridTemplateColumns={{ base: "1fr", lg: "repeat(8,1fr)" }} gap={4}>
-        <Text
+        <IconButton
+          onClick={() => dispatch(openMobileNav())}
+          display={{ base: "block", lg: "none" }}
+          boxShadow="lg"
+          // border="1px solid white"
           zIndex={100}
-          pos="absolute"
-          top={0}
-          right={0}
-          border="white solid 1px"
-          color="white"
-          fontSize={20}>
-          Mee
-        </Text>
+          pos="fixed"
+          top={5}
+          right={5}
+          color="white">
+          <Icon as={BiMenuAltRight} fontSize={"3rem"} color="green" />
+        </IconButton>
         <Box
+          className="mobileNav"
           minWidth="15rem"
           bg="#212121"
           color="white"
-          display={{ base: "none", lg: "block" }}
+          // display={{ base: "none", lg: "block" }}
+          borderRight="1px solid black"
+          ml={isMobileNavOpen ? "0%" : "-100%"}
           h="100vh"
           pos="fixed"
           fontSize={20}

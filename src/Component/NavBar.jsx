@@ -1,4 +1,12 @@
-import { Box, Image, Center, Text, Icon, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Center,
+  Text,
+  Icon,
+  Flex,
+  IconButton,
+} from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import {
   AiFillHome,
@@ -6,11 +14,30 @@ import {
   BsFillFileMusicFill,
   BsBarChartLineFill,
   FaMedal,
+  BiMenuAltRight,
 } from "react-icons/all";
 import logo from "../assets/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { openMobileNav } from "../Redux/Reducers/AppSlice";
+
 const NavBar = () => {
+  const { isMobileNavOpen } = useSelector((store) => store.appstate);
+  const dispatch = useDispatch();
+  console.log(isMobileNavOpen);
   return (
-    <Box>
+    <Box pos="relative">
+      {/* close mobile */}
+      <Icon
+        onClick={() => dispatch(openMobileNav())}
+        display={{ base: "block", lg: "none" }}
+        pos="absolute"
+        top={-9}
+        right={0}
+        as={BiMenuAltRight}
+        fontSize={"3rem"}
+        color="green"
+      />
+
       {/* logo */}
       <Center mt={8} gap={2}>
         <Image src={logo} alt="Logo-Image" h={12} w={12} />
