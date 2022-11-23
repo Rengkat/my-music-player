@@ -31,8 +31,8 @@ function App() {
           // border="1px solid white"
           zIndex={100}
           pos="fixed"
-          top={5}
-          right={5}
+          top={1}
+          right={1}
           color="white">
           <Icon as={BiMenuAltRight} fontSize={"3rem"} color="green" />
         </IconButton>
@@ -47,7 +47,7 @@ function App() {
           h="100vh"
           pos="fixed"
           fontSize={20}
-          zIndex={20}
+          zIndex={60}
           left={0}
           top={0}
           bottom={0}>
