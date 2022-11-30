@@ -40,10 +40,9 @@
 }
 .play {
   opacity: 0;
+  cursor: pointer;
 }
-.tr {
-  /* border: none; */
-}
+
 .tr:hover .play {
   opacity: 1;
 }

@@ -1,8 +1,8 @@
-import img from "../../assets/mi.jpg";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/all";
 import { Box, Image, Text } from "@chakra-ui/react";
-
-const MusicCard = ({ card }) => {
+import { Link } from "react-router-dom";
+const MusicCard = ({ song }) => {
+  const { background, images, title, subtitle } = song;
   return (
     <Box
       border="1px solid white"
@@ -11,15 +11,17 @@ const MusicCard = ({ card }) => {
       className="music-card">
       <Box>
         <Image
-          src={img}
+          src={images?.coverart}
           alt="Song image"
           w="full"
           height={40}
           objectFit="cover"
         />
         <Box p={3} fontSize={12} color="white">
-          <Text>M.I Abaga - Bigger Feat...</Text>
-          <Text>2022 Album</Text>
+          <Text>{title.slice(0, 50)}...</Text>
+          <Text cursor="pointer">
+            <Link to="/artistDetail">{subtitle}</Link>
+          </Text>
         </Box>
       </Box>
       <Box className="over-play">

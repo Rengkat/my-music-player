@@ -1,11 +1,14 @@
 import { Box } from "@chakra-ui/react";
 import Hero from "../../Component/Hero";
 import TableData from "../../Component/TableData";
+import { useGetTopChartsQuery } from "../../Redux/api/Api";
+import { useSelector, useDispatch } from "react-redux";
 
 import { BsBarChartLineFill } from "react-icons/all";
 
-const arr = [2, 2, 2, 2, 2, 2, 2];
 const TopChart = () => {
+  const { data, error, isLoading } = useGetTopChartsQuery();
+
   return (
     <Box bg="#121212" color="white" pb="7rem">
       <Hero
@@ -14,7 +17,7 @@ const TopChart = () => {
         icon={<BsBarChartLineFill />}
         subTitle="Top chart songs"
       />
-      <TableData date="DATE RELEASED" data={arr} display="none" />
+      <TableData date="DATE RELEASED" data={data} display="none" />
     </Box>
   );
 };

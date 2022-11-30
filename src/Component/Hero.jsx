@@ -37,7 +37,7 @@ const Hero = ({ name, nums, icon, subTitle, temTyle }) => {
               alignItems="center"
               gap={1}
               mb={{ base: "-0.3rem", lg: "-1rem" }}>
-              <Box fontSize={{ base: 10, lg: 30 }}> {icon} </Box>
+              <Box fontSize={{ base: 20, lg: 30 }}> {icon} </Box>
               <Text>{subTitle}</Text>
             </Flex>
             <Heading

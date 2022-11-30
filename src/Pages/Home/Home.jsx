@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 import TopChart from "./TopChart";
 import Search from "./Search";
 import MusicCard from "./MusicCard";
+import { useGetTopChartsQuery } from "../../Redux/api/Api";
+import Loader from "../../Component/Loader";
 // import { Link } from "react-router-dom";
 const Home = () => {
-  const card = [1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
+  const { data, error, isLoading } = useGetTopChartsQuery();
+  // console.log(data);
+
+  // console.log(err);
   return (
     <Flex
       w="100%"
@@ -14,22 +19,26 @@ const Home = () => {
       // justify={"space-between"}
       // gap={"100rem"}
       flexDir={{ base: "column-reverse", lg: "row" }}>
-      <Box w={{ base: "100%", lg: "69%" }}>
+      <Box w={{ base: "100%", lg: "69%" }} bg="#121212">
         <Box pb={"10rem"}>
           <Search />
-          <Grid
-            gridTemplateColumns={{
-              base: "repeat(2, 1fr)",
-              md: "repeat(3,1fr)",
-              lg: "repeat(4,1fr)",
-            }}
-            ml={{ base: "0rem", md: "3rem" }}
-            gap={5}
-            p={3}>
-            {card.map((card) => {
-              return <MusicCard key={card} card={card} />;
-            })}
-          </Grid>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <Grid
+              gridTemplateColumns={{
+                base: "repeat(2, 1fr)",
+                md: "repeat(3,1fr)",
+                lg: "repeat(4,1fr)",
+              }}
+              ml={{ base: "0rem", md: "3rem" }}
+              gap={5}
+              p={3}>
+              {data?.map((song) => {
+                return <MusicCard key={song?.key} song={song} />;
+              })}
+            </Grid>
+          )}
         </Box>
       </Box>
       <Box
@@ -48,8 +57,8 @@ const Home = () => {
 
         {/* ===========ITERATING TOP CHART============ */}
         <Grid overflow="hidden" pb={{ base: 7, lg: 0 }}>
-          {card.slice(0, 4).map((card, i) => {
-            return <TopChart key={i} />;
+          {data?.slice(0, 4).map((topSong) => {
+            return <TopChart key={topSong.key} topSong={topSong} />;
           })}
           <Flex justify="end" px={10} pb={1}>
             <Text>
@@ -76,10 +85,10 @@ const Home = () => {
             justify="space-around"
             // px={5}
           >
-            {card.slice(0, 3).map((card, i) => {
+            {data?.slice(0, 3).map((song, i) => {
               return (
-                <Box key={i}>
-                  <TopArtist key={i} />
+                <Box key={song?.key}>
+                  <TopArtist song={song} />
                 </Box>
               );
             })}

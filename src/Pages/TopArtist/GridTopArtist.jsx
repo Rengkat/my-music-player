@@ -1,21 +1,31 @@
 import { Box, Text, Image, Flex, Center } from "@chakra-ui/react";
-import mi from "../../assets/image-24-6-1920x1280.jpg";
 import { Link } from "react-router-dom";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/all";
 
-const GridTopArtist = () => {
+const GridTopArtist = ({ data }) => {
+  console
+    .log
+    //  `/artists/${song?.artists[0]?.adamid}` : "/top-artists"
+    ();
   return (
     <Box
       className="album-card"
       p={1}
       my={1}
+      // artistDetail/:artistId
       color="white"
+      // {`/${data?.artists[0]?.adamid}`}
       //   border="1px solid "
       bg="#212121"
       borderRadius={7}>
-      <Link to="/artistDetail">
+      <Link
+        to={
+          data.artists
+            ? `/artistDetail/${data?.artists[0]?.adamid}`
+            : "top-artist"
+        }>
         <Image
-          src={mi}
+          src={data?.images?.background}
           w="100%"
           h={{ base: "10rem", lg: "12rem" }}
           alt="Image"
@@ -25,7 +35,7 @@ const GridTopArtist = () => {
         />
         <Box>
           <Center>
-            <Text>M.I Abaga </Text>
+            <Text>{data?.subtitle.slice(0, 10)}</Text>
           </Center>
           <Center>
             <Text pt={2}>Artist</Text>

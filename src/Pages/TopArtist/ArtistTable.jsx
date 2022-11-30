@@ -10,12 +10,15 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
-import mi from "../assets/image-24-6-1920x1280.jpg";
-import TableDesktop from "./TableDesktop";
-
-const TableData = ({ date, data, display }) => {
-  // const { background, images, title, subtitle } = data;
-
+import ArtistTableDesktop from "./ArtistTableDesktop";
+// import TableDesktop from "./TableDesktop";
+// const data = [2, 34, 5, , 6, 7];
+const ArtistTable = ({ data }) => {
+  const part = data && Object.values(data);
+  const ArtistName = part && Object.values(part[0])[0].attributes.name;
+  const songs = data && Object.values(data.songs);
+  //   console.log(data);
+  //   console.log(songs);
   return (
     <>
       <TableContainer
@@ -33,7 +36,7 @@ const TableData = ({ date, data, display }) => {
           />
           <Text
             border="2px solid white"
-            display={display}
+            // display={display}
             fontSize={12}
             px={4}
             borderRadius={5}>
@@ -50,7 +53,7 @@ const TableData = ({ date, data, display }) => {
             <Tr>
               <Th w="5px"></Th>
               <Th w="8rem">TITLE</Th>
-              <Th w="5rem">ARTIST</Th>
+              <Th w="5rem">ALBUM</Th>
               <Th w="6rem">DATE</Th>
               <Th>
                 <Icon as={BiTime} fontSize={18} />
@@ -58,28 +61,33 @@ const TableData = ({ date, data, display }) => {
               {/* <Th></Th> */}
             </Tr>
           </Thead>
-          {data?.map((data, i) => {
+          {songs?.map((song, i) => {
+            // console.log(song);
             return (
-              <Tbody key={i}>
+              <Tbody key={song.id}>
                 <Tr>
                   <Td border="none" white-space="nowrap">
-                    <Text fontSize={10}>{i + 1}</Text>
+                    <Text fontSize={10}></Text>
                   </Td>
                   <Td border="none" wordBreak="break-all">
                     <Flex gap={1}>
                       <Text wordBreak="break-all" fontSize={10}>
-                        {data?.title?.slice(0, 20)}...
+                        {song?.attributes?.name?.slice(0, 20)}
                       </Text>
                     </Flex>
                   </Td>
                   <Td border="none">
-                    <Text fontSize={10}>{data?.subtitle.slice(0, 12)}</Text>
+                    <Text fontSize={10}>
+                      {song?.attributes?.albumName.slice(0, 15)}
+                    </Text>
                   </Td>
                   <Td border="none">
-                    <Text fontSize={10}>24 Dec., 2022</Text>
+                    <Text fontSize={10}>{song.attributes.releaseDate}</Text>
                   </Td>
                   <Td border="none">
-                    <Text fontSize={10}>25.4</Text>
+                    <Text fontSize={10}>
+                      {(song.attributes.durationInMillis / 60000).toFixed(2)}
+                    </Text>
                   </Td>
                 </Tr>
               </Tbody>
@@ -87,9 +95,12 @@ const TableData = ({ date, data, display }) => {
           })}
         </Table>
       </TableContainer>
-      <TableDesktop date={date} data={data} display={display} />
+      <Box display={{ base: "none", lg: "block" }}>
+        <ArtistTableDesktop data={data} />
+      </Box>
+      {/* <TableDesktop date={date} data={data} display={display} /> */}
     </>
   );
 };
 
-export default TableData;
+export default ArtistTable;

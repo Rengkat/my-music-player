@@ -63,11 +63,11 @@ const NavBar = () => {
             </Center>
           </Flex>
         </NavLink>
-        <NavLink to={"/albums"} className="nav">
+        <NavLink to={"/sound-around-you"} className="nav">
           <Flex w="80%" mb={3}>
             <Center gap={3}>
               <Icon as={BsFillFileMusicFill} color="white" opacity="0.7" />
-              <Text>Albums</Text>
+              <Text>Around You</Text>
             </Center>
           </Flex>
         </NavLink>

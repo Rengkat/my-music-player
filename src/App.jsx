@@ -26,7 +26,7 @@ function App() {
       <Grid gridTemplateColumns={{ base: "1fr", lg: "repeat(8,1fr)" }} gap={4}>
         <IconButton
           onClick={() => dispatch(openMobileNav())}
-          display={{ base: "block", lg: "none" }}
+          display={{ base: isMobileNavOpen ? "none" : "block", lg: "none" }}
           boxShadow="lg"
           // border="1px solid white"
           zIndex={100}
@@ -43,11 +43,11 @@ function App() {
           color="white"
           // display={{ base: "none", lg: "block" }}
           borderRight="1px solid black"
-          ml={isMobileNavOpen ? "0%" : "-100%"}
+          ml={{ base: isMobileNavOpen ? "0%" : "-100%", lg: "0%" }}
           h="100vh"
           pos="fixed"
           fontSize={20}
-          zIndex={60}
+          zIndex={{ base: 60, lg: 40 }}
           left={0}
           top={0}
           bottom={0}>
@@ -57,11 +57,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/top-chart" element={<TopChart />} />
-            <Route path="/albums" element={<Album />} />
+            <Route path="/sound-around-you" element={<Album />} />
             <Route path="/top-artist" element={<TopArtist />} />
             <Route path="/favorite" element={<Favorite />} />
-            <Route path="/favorite" element={<Favorite />} />
-            <Route path="/artistDetail" element={<ArtistDetails />} />
+            <Route path="/artistDetail/:artistId" element={<ArtistDetails />} />
             <Route path="/albumDetail" element={<AlbumDetail />} />
           </Routes>
         </Box>
@@ -75,7 +74,7 @@ function App() {
         px={7}
         zIndex={50}
         right="0"
-        h={{ base: "20vh", lg: "7rem" }}>
+        h={{ base: "20vh", lg: "6rem" }}>
         <Player />
       </Box>
     </>

@@ -3,21 +3,29 @@ import Hero from "../../Component/Hero";
 import GridTopArtist from "./GridTopArtist";
 import { MdVerified } from "react-icons/all";
 import TableData from "../../Component/TableData";
-const arr = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
+import { useParams } from "react-router-dom";
+import { useGetArtistDetailQuery } from "../../Redux/api/Api";
+import ArtistTable from "./ArtistTable";
 
 const ArtistDetails = () => {
+  const { artistId } = useParams();
+  const { data, isLoading, error } = useGetArtistDetailQuery(artistId);
+  const part = data && Object.values(data);
+  const artistName = part && Object.values(part[0])[0].attributes.name;
+  // console.log(si);
   return (
     <Box bg="#121212" color="white">
       <Box>
         <Hero
           temTyle="flex"
-          name="M.I. Abaga"
+          name={artistName}
           icon={<MdVerified color="	#1DA1F2" />}
           subTitle="Verified Artist"
         />
       </Box>
       <Box>
-        <TableData date="DATE RELEASED" data={arr} display="flex" />
+        <ArtistTable data={data} />
+        {/* <TableData date="DATE RELEASED" data={arr} display="flex" /> */}
       </Box>
     </Box>
   );

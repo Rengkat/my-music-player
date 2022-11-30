@@ -2,9 +2,10 @@ import { Box, Grid } from "@chakra-ui/react";
 import Hero from "../../Component/Hero";
 import GridTopArtist from "./GridTopArtist";
 import { FaMedal } from "react-icons/all";
+import { useGetTopChartsQuery } from "../../Redux/api/Api";
 
 const TopChart = () => {
-  const arr = [2, 3, 4, 5, 6, 7, 7, 8, 9, 6, 5, 5, 5, 5, 5, 55, 5];
+  const { data, error, isLoading } = useGetTopChartsQuery();
   return (
     <Box>
       <Box>
@@ -24,8 +25,8 @@ const TopChart = () => {
         pb="8rem"
         pl={{ base: "1rem", lg: "4rem" }}
         pr="1rem">
-        {arr?.map((data, i) => {
-          return <GridTopArtist key={i} />;
+        {data?.map((data, i) => {
+          return <GridTopArtist key={i} data={data} />;
         })}
       </Grid>
     </Box>
