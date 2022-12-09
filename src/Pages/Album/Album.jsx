@@ -1,16 +1,19 @@
 import { Box, Text, Image, Grid } from "@chakra-ui/react";
 import GridAlbum from "./GridAlbum";
+import { useSelector, useDispatch } from "react-redux";
 import { BsFillFileMusicFill } from "react-icons/all";
 import Hero from "../../Component/Hero";
 import { useState, useEffect } from "react";
 import { useGetTopChartsByCountryQuery } from "../../Redux/api/Api";
 import Loader from "../../Component/Loader";
 
-const arr = [1, 23, 4, 4, 4, 5, 6, , 4, 57, 5, 4, , 3, 2, 2, 2, 2, 2, 4];
 const Album = () => {
   const [countryCode, setCountryCode] = useState("");
   const { data, isLoading, isError } =
     useGetTopChartsByCountryQuery(countryCode);
+  const { activeSong, isPlaying, isActive } = useSelector(
+    (store) => store.appstate
+  );
   // console.log(data);
   useEffect(() => {
     try {
@@ -21,7 +24,7 @@ const Album = () => {
         .then((response) => setCountryCode(response?.location?.country));
     } catch (error) {}
   }, [countryCode]);
-  console.log(countryCode);
+  // console.log(countryCode);
   return (
     <Box w="100%">
       <Box>
@@ -43,8 +46,18 @@ const Album = () => {
           pb="8rem"
           pl={{ base: "1rem", lg: "4rem" }}
           pr="1rem">
-          {data?.map((song) => {
-            return <GridAlbum key={song.key} song={song} />;
+          {data?.map((song, i) => {
+            return (
+              <GridAlbum
+                key={song.key}
+                song={song}
+                activeSong={activeSong}
+                i={i}
+                isPlaying={isPlaying}
+                isActive={isActive}
+                data={data}
+              />
+            );
           })}
         </Grid>
       )}

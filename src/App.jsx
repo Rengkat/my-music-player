@@ -14,7 +14,7 @@ import {
   Album,
   AlbumDetail,
 } from "./Pages/index";
-import Player from "./Component/Player";
+import Player from "./Component/MusicPlayer/Player";
 import { useDispatch, useSelector } from "react-redux";
 import { openMobileNav } from "./Redux/Reducers/AppSlice";
 function App() {
@@ -23,7 +23,10 @@ function App() {
   // console.log(openMobileNav);
   return (
     <>
-      <Grid gridTemplateColumns={{ base: "1fr", lg: "repeat(8,1fr)" }} gap={4}>
+      <Grid
+        bg="#121212"
+        gridTemplateColumns={{ base: "1fr", lg: "repeat(8,1fr)" }}
+        gap={4}>
         <IconButton
           onClick={() => dispatch(openMobileNav())}
           display={{ base: isMobileNavOpen ? "none" : "block", lg: "none" }}
@@ -62,6 +65,7 @@ function App() {
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/artistDetail/:artistId" element={<ArtistDetails />} />
             <Route path="/albumDetail" element={<AlbumDetail />} />
+            <Route path="/song/:songDetail" element={<SongDetail />} />
           </Routes>
         </Box>
       </Grid>

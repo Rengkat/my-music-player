@@ -9,6 +9,8 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
+import { useSelector, useDispatch } from "react-redux";
+import { setActiveSong, playPause } from "../Redux/Reducers/AppSlice";
 
 const ArtistTableDesktop = ({ data }) => {
   const part = data && Object.values(data);

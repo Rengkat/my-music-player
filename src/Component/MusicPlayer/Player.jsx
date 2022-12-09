@@ -8,7 +8,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import im from "../assets/mi.jpg";
+import im from "../../assets/mi.jpg";
 import {
   BsFillPlayCircleFill,
   BsFillPauseCircleFill,
@@ -41,9 +41,11 @@ const Player = () => {
               border="1px solid white"
             />
             <Box>
-              <Text>Bigger Feat...</Text>
               <Text>
-                <Link to="/artistDetail">M.I Abaga</Link>
+                <Link to="/song/:songDetail">Bigger Feat...</Link>
+              </Text>
+              <Text>
+                <Link to="/artistDetail/:artistId">M.I Abaga</Link>
               </Text>
             </Box>
             <Icon as={MdOutlineFavoriteBorder} fontSize={30} />

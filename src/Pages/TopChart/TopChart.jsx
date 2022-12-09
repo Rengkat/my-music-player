@@ -8,7 +8,10 @@ import { BsBarChartLineFill } from "react-icons/all";
 
 const TopChart = () => {
   const { data, error, isLoading } = useGetTopChartsQuery();
-
+  const { activeSong, isPlaying, isActive } = useSelector(
+    (store) => store.appstate
+  );
+  // console.log(data);
   return (
     <Box bg="#121212" color="white" pb="7rem">
       <Hero
@@ -17,7 +20,13 @@ const TopChart = () => {
         icon={<BsBarChartLineFill />}
         subTitle="Top chart songs"
       />
-      <TableData date="DATE RELEASED" data={data} display="none" />
+      <TableData
+        date="DATE RELEASED"
+        data={data}
+        activeSong={activeSong}
+        isPlaying={isPlaying}
+        isActive={isActive}
+      />
     </Box>
   );
 };

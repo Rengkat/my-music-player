@@ -1,6 +1,7 @@
 import { Grid, GridItem, Text, Heading, Flex, Box } from "@chakra-ui/react";
 import TopArtist from "./TopArtist";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import TopChart from "./TopChart";
 import Search from "./Search";
 import MusicCard from "./MusicCard";
@@ -9,7 +10,9 @@ import Loader from "../../Component/Loader";
 // import { Link } from "react-router-dom";
 const Home = () => {
   const { data, error, isLoading } = useGetTopChartsQuery();
-  // console.log(data);
+  const { activeSong, isPlaying, isActive } = useSelector(
+    (store) => store.appstate
+  );
 
   // console.log(err);
   return (
@@ -34,8 +37,18 @@ const Home = () => {
               ml={{ base: "0rem", md: "3rem" }}
               gap={5}
               p={3}>
-              {data?.map((song) => {
-                return <MusicCard key={song?.key} song={song} />;
+              {data?.map((song, i) => {
+                return (
+                  <MusicCard
+                    key={song?.key}
+                    song={song}
+                    activeSong={activeSong}
+                    i={i}
+                    isPlaying={isPlaying}
+                    isActive={isActive}
+                    data={data}
+                  />
+                );
               })}
             </Grid>
           )}

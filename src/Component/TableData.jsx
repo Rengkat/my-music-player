@@ -11,10 +11,19 @@ import {
 } from "@chakra-ui/react";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
 import mi from "../assets/image-24-6-1920x1280.jpg";
+import TablePhonePlayer from "./MusicPlayer/TablePlayerSingle";
 import TableDesktop from "./TableDesktop";
 
-const TableData = ({ date, data, display }) => {
+const TableData = ({
+  date,
+  data,
+  display,
+  activeSong,
+  isPlaying,
+  isActive,
+}) => {
   // const { background, images, title, subtitle } = data;
+  // console.log(data?.subtitle);
 
   return (
     <>
@@ -25,12 +34,6 @@ const TableData = ({ date, data, display }) => {
         padding={0}
         display={{ base: "block", md: "none" }}>
         <Flex align="center" gap={3} pb="1rem" pl={5} pt={3}>
-          <Icon
-            as={BsFillPlayCircleFill}
-            cursor="pointer"
-            fontSize="2rem"
-            color="#1db954"
-          />
           <Text
             border="2px solid white"
             display={display}
@@ -55,12 +58,14 @@ const TableData = ({ date, data, display }) => {
               <Th>
                 <Icon as={BiTime} fontSize={18} />
               </Th>
-              {/* <Th></Th> */}
             </Tr>
           </Thead>
           {data?.map((data, i) => {
+            // console.log(data?.artists[0]?.adamid);
             return (
               <Tbody key={i}>
+                {/* <TablePlayerSinglesize='2rem' /> */}
+
                 <Tr>
                   <Td border="none" white-space="nowrap">
                     <Text fontSize={10}>{i + 1}</Text>
@@ -87,7 +92,14 @@ const TableData = ({ date, data, display }) => {
           })}
         </Table>
       </TableContainer>
-      <TableDesktop date={date} data={data} display={display} />
+      <TableDesktop
+        date={date}
+        data={data}
+        display={display}
+        activeSong={activeSong}
+        isPlaying={isPlaying}
+        isActive={isActive}
+      />
     </>
   );
 };

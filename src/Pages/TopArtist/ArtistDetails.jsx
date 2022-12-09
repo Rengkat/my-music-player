@@ -2,6 +2,7 @@ import { Box, Grid } from "@chakra-ui/react";
 import Hero from "../../Component/Hero";
 import GridTopArtist from "./GridTopArtist";
 import { MdVerified } from "react-icons/all";
+import { useSelector, useDispatch } from "react-redux";
 import TableData from "../../Component/TableData";
 import { useParams } from "react-router-dom";
 import { useGetArtistDetailQuery } from "../../Redux/api/Api";
@@ -9,10 +10,15 @@ import ArtistTable from "./ArtistTable";
 
 const ArtistDetails = () => {
   const { artistId } = useParams();
+
   const { data, isLoading, error } = useGetArtistDetailQuery(artistId);
   const part = data && Object.values(data);
   const artistName = part && Object.values(part[0])[0].attributes.name;
-  // console.log(si);
+  // console.log(data);
+
+  const { activeSong, isPlaying, isActive } = useSelector(
+    (store) => store.appstate
+  );
   return (
     <Box bg="#121212" color="white">
       <Box>
@@ -24,7 +30,12 @@ const ArtistDetails = () => {
         />
       </Box>
       <Box>
-        <ArtistTable data={data} />
+        <ArtistTable
+          data={data}
+          activeSong={activeSong}
+          isPlaying={isPlaying}
+          isActive={isActive}
+        />
         {/* <TableData date="DATE RELEASED" data={arr} display="flex" /> */}
       </Box>
     </Box>

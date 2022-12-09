@@ -1,8 +1,19 @@
-import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/all";
 import { Box, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-const MusicCard = ({ song }) => {
-  const { background, images, title, subtitle } = song;
+import { useSelector, useDispatch } from "react-redux";
+import { setActiveSong, playPause } from "../../Redux/Reducers/AppSlice";
+import PlayPause from "../../Component/MusicPlayer/PlayPause";
+const MusicCard = ({ song, activeSong, i, isPlaying, isActive, data }) => {
+  const { images, title, subtitle } = song;
+  const dispatch = useDispatch();
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
+  };
   return (
     <Box
       border="1px solid white"
@@ -24,9 +35,16 @@ const MusicCard = ({ song }) => {
           </Text>
         </Box>
       </Box>
-      <Box className="over-play">
-        <BsFillPlayCircleFill fontSize={60} color="#1db954" />
-      </Box>
+      <PlayPause
+        sty="over-play"
+        handlePause={handlePauseClick}
+        handlePlay={handlePlayClick}
+        isPlaying={isPlaying}
+        isActive={isActive}
+        activeSong={activeSong}
+        i={i}
+        data={data}
+      />
     </Box>
   );
 };

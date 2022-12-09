@@ -13,7 +13,7 @@ import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
 import ArtistTableDesktop from "./ArtistTableDesktop";
 // import TableDesktop from "./TableDesktop";
 // const data = [2, 34, 5, , 6, 7];
-const ArtistTable = ({ data }) => {
+const ArtistTable = ({ data, activeSong, isPlaying, isActive }) => {
   const part = data && Object.values(data);
   const ArtistName = part && Object.values(part[0])[0].attributes.name;
   const songs = data && Object.values(data.songs);
@@ -82,11 +82,11 @@ const ArtistTable = ({ data }) => {
                     </Text>
                   </Td>
                   <Td border="none">
-                    <Text fontSize={10}>{song.attributes.releaseDate}</Text>
+                    <Text fontSize={10}>{song?.attributes?.releaseDate}</Text>
                   </Td>
                   <Td border="none">
                     <Text fontSize={10}>
-                      {(song.attributes.durationInMillis / 60000).toFixed(2)}
+                      {(song?.attributes?.durationInMillis / 60000).toFixed(2)}
                     </Text>
                   </Td>
                 </Tr>
@@ -96,7 +96,12 @@ const ArtistTable = ({ data }) => {
         </Table>
       </TableContainer>
       <Box display={{ base: "none", lg: "block" }}>
-        <ArtistTableDesktop data={data} />
+        <ArtistTableDesktop
+          data={data}
+          activeSong={activeSong}
+          isPlaying={isPlaying}
+          isActive={isActive}
+        />
       </Box>
       {/* <TableDesktop date={date} data={data} display={display} /> */}
     </>

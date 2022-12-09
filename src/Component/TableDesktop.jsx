@@ -8,10 +8,31 @@ import {
   Td,
   TableContainer,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
 import mi from "../assets/image-24-6-1920x1280.jpg";
+import TablePlayerSingle from "./MusicPlayer/TablePlayerSingle";
+import { useSelector, useDispatch } from "react-redux";
+import { setActiveSong, playPause } from "../Redux/Reducers/AppSlice";
 
-const TableDesktop = ({ date, data, display }) => {
+const TableDesktop = ({
+  date,
+  data,
+  display,
+  activeSong,
+  isPlaying,
+  isActive,
+}) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
+  };
   return (
     <>
       <TableContainer
@@ -21,12 +42,6 @@ const TableDesktop = ({ date, data, display }) => {
         w={{ base: "100%", lg: "90%" }}
         ml={{ base: "0rem", lg: "3rem" }}>
         <Flex align="center" gap={8} pb="-3rem" pl="2rem" pt={4}>
-          <Icon
-            as={BsFillPlayCircleFill}
-            cursor="pointer"
-            fontSize="4rem"
-            color="#1db954"
-          />
           <Text
             border="2px solid white"
             display={display}
@@ -55,7 +70,7 @@ const TableDesktop = ({ date, data, display }) => {
               {/* <Th></Th> */}
             </Tr>
           </Thead>
-          {data?.map((data, i) => {
+          {data?.map((song, i) => {
             return (
               <Tbody key={i}>
                 <Tr className="tr">
@@ -66,16 +81,24 @@ const TableDesktop = ({ date, data, display }) => {
                     <Flex gap={3}>
                       <Image
                         border="none"
-                        src={data?.images?.coverart}
+                        src={song?.images?.coverart}
                         h={{ base: 5, lg: 10 }}
                         w={12}
                         objectFit="cover"
                       />
-                      <Text pt={2}>{data?.title.slice(0, 30)}</Text>
+                      <Text pt={2}>{song?.title.slice(0, 30)}</Text>
                     </Flex>
                   </Td>
                   <Td border="none">
-                    <Text>{data?.subtitle.slice(0, 12)}</Text>
+                    <Text
+                      cursor="pointer"
+                      onClick={() =>
+                        song.artists
+                          ? `/artistDetail/${song?.artists[0]?.adamid}`
+                          : "top-artist"
+                      }>
+                      {song?.subtitle.slice(0, 12)}
+                    </Text>
                   </Td>
                   <Td border="none">
                     <Text>{new Date().toDateString()}</Text>
@@ -84,11 +107,14 @@ const TableDesktop = ({ date, data, display }) => {
                     <Text>25.4</Text>
                   </Td>
                   <Td border="none">
-                    <Icon
-                
-                      className="play" 
-                      as={BsPlayFill}
-                      fontSize={25}
+                    <TablePlayerSingle
+                      handlePause={handlePauseClick}
+                      handlePlay={() => handlePlayClick(song, i)}
+                      isPlaying={isPlaying}
+                      isActive={isActive}
+                      activeSong={activeSong}
+                      i={i}
+                      song={song}
                     />
                   </Td>
                 </Tr>
