@@ -1,19 +1,31 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setActiveSong, playPause } from "../../Redux/Reducers/AppSlice";
+import { useDispatch } from "react-redux";
+// import { setActiveSong, playPause } from "../../Redux/Reducers/AppSlice";
 import PlayPause from "../../Component/MusicPlayer/PlayPause";
-const MusicCard = ({ song, activeSong, i, isPlaying, isActive, data }) => {
+const MusicCard = ({
+  song,
+  activeSong,
+  i,
+  isPlaying,
+  isActive,
+  data,
+  setActiveSong,
+  playPause,
+}) => {
   const { images, title, subtitle } = song;
+  console.log(isPlaying);
   const dispatch = useDispatch();
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
 
   const handlePlayClick = () => {
-    dispatch(setActiveSong({ song, data, i }));
+    dispatch(setActiveSong({ song, i }));
     dispatch(playPause(true));
+    // console.log(me);
   };
+
   return (
     <Box
       border="1px solid white"

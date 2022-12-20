@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Icon, Image, Center, Text, Flex } from "@chakra-ui/react";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
 
-const TablePhonePlayer = ({ size }) => {
+const TablePlayerSingle = ({ size }) => {
   return (
     <Box>
       <Icon className="play" as={BsPlayFill} fontSize={25} />
@@ -16,4 +16,4 @@ const TablePhonePlayer = ({ size }) => {
   );
 };
 
-export default TablePhonePlayer;
+export default TablePlayerSingle;

@@ -4,10 +4,7 @@ import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/all";
 
 const GridTopArtist = ({ data }) => {
   const navigate = useNavigate();
-  console
-    .log
-    //  `/artists/${song?.artists[0]?.adamid}` : "/top-artists"
-    ();
+
   return (
     <Box
       className="album-card"
@@ -21,7 +18,7 @@ const GridTopArtist = ({ data }) => {
       borderRadius={7}
       onClick={() =>
         navigate(
-          data.artists
+          data?.artists
             ? `/artistDetail/${data?.artists[0]?.adamid}`
             : "top-artist"
         )

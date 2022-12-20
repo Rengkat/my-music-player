@@ -23,7 +23,7 @@ import { openMobileNav } from "../Redux/Reducers/AppSlice";
 const NavBar = () => {
   const { isMobileNavOpen } = useSelector((store) => store.appstate);
   const dispatch = useDispatch();
-  console.log(isMobileNavOpen);
+  // console.log(isMobileNavOpen);
   return (
     <Box pos="relative">
       {/* close mobile */}

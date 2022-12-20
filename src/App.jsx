@@ -19,7 +19,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { openMobileNav } from "./Redux/Reducers/AppSlice";
 function App() {
   const dispatch = useDispatch();
-  const { isMobileNavOpen } = useSelector((store) => store.appstate);
+  const { isMobileNavOpen, isPlaying, activeSong } = useSelector(
+    (store) => store.appstate
+  );
   // console.log(openMobileNav);
   return (
     <>
@@ -65,22 +67,24 @@ function App() {
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/artistDetail/:artistId" element={<ArtistDetails />} />
             <Route path="/albumDetail" element={<AlbumDetail />} />
-            <Route path="/song/:songDetail" element={<SongDetail />} />
+            <Route path="/song/:songId" element={<SongDetail />} />
           </Routes>
         </Box>
       </Grid>
-      <Box
-        colSpan={8}
-        bg="#121212"
-        pos="fixed"
-        bottom="0"
-        left="0"
-        px={7}
-        zIndex={50}
-        right="0"
-        h={{ base: "20vh", lg: "6rem" }}>
-        <Player />
-      </Box>
+      {activeSong?.title && (
+        <Box
+          colSpan={8}
+          bg="#121212"
+          pos="fixed"
+          bottom="0"
+          left="0"
+          px={7}
+          zIndex={50}
+          right="0"
+          h={{ base: "20vh", lg: "6rem" }}>
+          <Player />
+        </Box>
+      )}
     </>
   );
 }

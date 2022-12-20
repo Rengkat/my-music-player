@@ -11,9 +11,15 @@ import {
 } from "@chakra-ui/react";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
 import ArtistTableDesktop from "./ArtistTableDesktop";
-// import TableDesktop from "./TableDesktop";
-// const data = [2, 34, 5, , 6, 7];
-const ArtistTable = ({ data, activeSong, isPlaying, isActive }) => {
+
+const ArtistTable = ({
+  data,
+  activeSong,
+  date,
+  display,
+  isPlaying,
+  isActive,
+}) => {
   const part = data && Object.values(data);
   const ArtistName = part && Object.values(part[0])[0].attributes.name;
   const songs = data && Object.values(data.songs);
@@ -97,6 +103,8 @@ const ArtistTable = ({ data, activeSong, isPlaying, isActive }) => {
       </TableContainer>
       <Box display={{ base: "none", lg: "block" }}>
         <ArtistTableDesktop
+          display={display}
+          date={date}
           data={data}
           activeSong={activeSong}
           isPlaying={isPlaying}

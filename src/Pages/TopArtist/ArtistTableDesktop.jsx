@@ -9,13 +9,30 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { BiTime, BsPlayFill, BsFillPlayCircleFill } from "react-icons/all";
+import TablePlayerSingle from "../../Component/MusicPlayer/TablePlayerSingle";
+import TablePhonePlayer from "../../Component/MusicPlayer/TablePlayerSingle";
+import { setActiveSong, playPause } from "../../Redux/Reducers/AppSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveSong, playPause } from "../Redux/Reducers/AppSlice";
 
-const ArtistTableDesktop = ({ data }) => {
+const ArtistTableDesktop = ({
+  data,
+  display,
+  date,
+  activeSong,
+  isPlaying,
+  isActive,
+}) => {
   const part = data && Object.values(data);
   const ArtistName = part && Object.values(part[0])[0].attributes.name;
   const songs = data && Object.values(data.songs);
+  const dispatch = useDispatch();
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
+  };
   return (
     <>
       <TableContainer
@@ -91,7 +108,16 @@ const ArtistTableDesktop = ({ data }) => {
                     </Text>
                   </Td>
                   <Td border="none">
-                    <Icon className="play" as={BsPlayFill} fontSize={25} />
+                    <TablePlayerSingle
+                      handlePause={handlePauseClick}
+                      handlePlay={() => handlePlayClick(song, data, i)}
+                      isPlaying={isPlaying}
+                      isActive={isActive}
+                      activeSong={activeSong}
+                      i={i}
+                      song={song}
+                    />
+                    {/* <Icon className="play" as={BsPlayFill} fontSize={25} /> */}
                   </Td>
                 </Tr>
               </Tbody>

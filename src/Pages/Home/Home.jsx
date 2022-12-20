@@ -7,6 +7,8 @@ import Search from "./Search";
 import MusicCard from "./MusicCard";
 import { useGetTopChartsQuery } from "../../Redux/api/Api";
 import Loader from "../../Component/Loader";
+import { setActiveSong, playPause } from "../../Redux/Reducers/AppSlice";
+
 // import { Link } from "react-router-dom";
 const Home = () => {
   const { data, error, isLoading } = useGetTopChartsQuery();
@@ -47,6 +49,8 @@ const Home = () => {
                     isPlaying={isPlaying}
                     isActive={isActive}
                     data={data}
+                    setActiveSong={setActiveSong}
+                    playPause={playPause}
                   />
                 );
               })}

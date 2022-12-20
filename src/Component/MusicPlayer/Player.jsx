@@ -1,93 +1,113 @@
-import {
-  Box,
-  Flex,
-  Center,
-  Icon,
-  Button,
-  Progress,
-  Image,
-  Text,
-} from "@chakra-ui/react";
-import im from "../../assets/mi.jpg";
-import {
-  BsFillPlayCircleFill,
-  BsFillPauseCircleFill,
-  MdFavorite,
-  BsShuffle,
-  FaForward,
-  FaBackward,
-  FiRepeat,
-  RiRepeatOneLine,
-  GiMicrophone,
-  BsFillVolumeUpFill,
-  IoMdVolumeOff,
-  MdOutlineFavoriteBorder,
-} from "react-icons/all";
+import { Box, Flex } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Audio from "./Audio";
+import Controls from "./Controls";
+import Track from "./Track";
+import Volume from "./Volume";
+import {
+  playPause,
+  addFavorite,
+  setShuffle,
+  setRepeat,
+} from "../../Redux/Reducers/AppSlice";
+
 const Player = () => {
+  const {
+    activeSong,
+    isPlaying,
+    isActive,
+    currentSongIndex,
+    currentSongs,
+    shuffle,
+    repeat,
+  } = useSelector((store) => store.appstate);
+  // console.log(shuffle);
+  const [duration, setDuration] = useState(0);
+  const [seekTime, setSeekTime] = useState(0);
+  const [appTime, setAppTime] = useState(0);
+  const [volume, setVolume] = useState(0.3);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (currentSongs.length) dispatch(playPause(true));
+  }, [currentSongIndex]);
+  // console.log(isPlaying);
+  const handlePlayPause = () => {
+    // if (!isActive) return;
+
+    if (isPlaying) {
+      dispatch(playPause(false));
+    } else {
+      dispatch(playPause(true));
+    }
+  };
+
+  const handleNextSong = () => {
+    dispatch(playPause(false));
+
+    if (!shuffle) {
+      dispatch(nextSong((currentSongIndex + 1) % currentSongs.length));
+    } else {
+      dispatch(nextSong(Math.floor(Math.random() * currentSongs.length)));
+    }
+  };
+
+  const handlePrevSong = () => {
+    if (currentSongIndex === 0) {
+      dispatch(prevSong(currentSongs.length - 1));
+    } else if (shuffle) {
+      dispatch(prevSong(Math.floor(Math.random() * currentSongs.length)));
+    } else {
+      dispatch(prevSong(currentSongIndex - 1));
+    }
+  };
+  // console.log(shuffle);
   return (
     <Box>
       <Flex
         justify="space-between"
         pt={{ base: "0.6rem", lg: "1rem" }}
         flexDir={{ base: "column", lg: "row" }}>
-        {/* ==============MUSIC INFOR======== */}
-        <Box color="white">
-          <Center gap={{ base: 10, lg: 5 }} fontSize={15}>
-            <Image
-              src={im}
-              w={{ base: 9, lg: 12 }}
-              h={{ base: 9, lg: 12 }}
-              border="1px solid white"
-            />
-            <Box>
-              <Text>
-                <Link to="/song/:songDetail">Bigger Feat...</Link>
-              </Text>
-              <Text>
-                <Link to="/artistDetail/:artistId">M.I Abaga</Link>
-              </Text>
-            </Box>
-            <Icon as={MdOutlineFavoriteBorder} fontSize={30} />
-          </Center>
-        </Box>
+        {/* ==========TRACK DETAILS====== */}
+        <Track activeSong={activeSong} addFavorite={addFavorite} />
+        {/* ==============AUDIO======== */}
+        {/* <Audio
+          activeSong={activeSong}
+          volume={volume}
+          isPlaying={isPlaying}
+          seekTime={seekTime}
+          repeat={repeat}
+          currentSongIndex={currentSongIndex}
+          onEnded={handleNextSong}
+          onTimeUpdate={(event) => setAppTime(event.target.currentTime)}
+          onLoadedData={(event) => setDuration(event.target.duration)}
+        /> */}
         {/* =================CONTROLS=============== */}
-        <Box py={{ base: 3, lg: 5 }}>
-          <Center gap={5} fontSize={20}>
-            <Icon as={BsShuffle} color="white" />
-            <Icon as={FaBackward} color="white" />
-            <Icon as={BsFillPlayCircleFill} color="white" fontSize={35} />
-            <Icon as={FaForward} color="white" />
-            <Icon as={FiRepeat} color="white" />
-          </Center>
-          <Progress
-            mt={3}
-            w={{ base: "15rem", lg: "32rem" }}
-            mx="auto"
-            value={50}
-            size="xs"
-            colorScheme="green"
-            borderRadius="7px"
-            // color="#1db954"
-          />
-        </Box>
+        <Controls
+          isPlaying={isPlaying}
+          isActive={isActive}
+          currentSongs={currentSongs}
+          handlePlayPause={handlePlayPause}
+          handlePrevSong={handlePrevSong}
+          handleNextSong={handleNextSong}
+          volume={volume}
+          setVolume={setVolume}
+          duration={duration}
+          setDuration={setDuration}
+          seekTime={seekTime}
+          setSeekTime={setSeekTime}
+          appTime={appTime}
+          setAppTime={setAppTime}
+        />
         {/* ==============volume================== */}
-        <Box pt={5} display={{ base: "none", lg: "block" }}>
-          <Center gap={4}>
-            <Icon as={GiMicrophone} color="white" />
-            <Center gap={2}>
-              <Icon as={BsFillVolumeUpFill} color="white" />
-              <Progress
-                w="6rem"
-                value={50}
-                size="xs"
-                colorScheme="green"
-                borderRadius="7px"
-                // color="#1db954"
-              />
-            </Center>
-          </Center>
-        </Box>
+        <Volume
+          value={volume}
+          min="0"
+          max="1"
+          onChange={(event) => setVolume(event.target.value)}
+          setVolume={setVolume}
+        />
       </Flex>
     </Box>
   );
